@@ -1,12 +1,30 @@
 import "./App.css";
+import ForgotPassword from "./components/Forgotpass";
+import Navbar from "./components/Navbar";
+import Contactpage from "./pages/Contactpage";
+import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import { useState } from "react";
+import { Routes,Route } from "react-router-dom";
+
+
 
 function App() {
+
+  const [loggedIn ,setLoggedIn] = useState(false);
+
   return (
-    <main className="flex justify-center gap-4 flex-col min-h-screen">
-      <h1 className="text-3xl text-center font-bold underline">React & Tailwind CSS Starter Pack</h1>
-      <p className="text-center text-xl">This is a starter pack for React & Tailwind CSS projects.</p>
-      <img src="https://bit.ly/3wsmzTy" alt="meme" className="mx-auto" />
-    </main>
+    <div>
+      <Navbar/>
+      <Routes>
+        <Route path='/' element={<Homepage/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/register' element={<Register/>}></Route>
+        <Route path='/forgot' element={<ForgotPassword/>}></Route>
+        <Route path='/contact' element={<Contactpage/>}/>
+      </Routes>
+    </div>
   );
 }
 
